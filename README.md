@@ -1,7 +1,5 @@
 # Hyperion
 
----
-
 This is a CLI meant to accompany the [Plutus Light compiler](https://github.com/OpenEngineer/plutus-light).
 
 ## Installation [WIP]
@@ -16,6 +14,7 @@ Currently to try Hyperion you have to:
 
   ```shell
   $ git clone https://github.com/Ch1n3du/Hyperion
+    ...
   ```
 
 - To use Hyperion:
