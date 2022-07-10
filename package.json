@@ -1,0 +1,19 @@
+{
+  "name": "hyperion-pl",
+  "version": "1.0.0",
+  "description": "A CLI for using the Plutus-Light library.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Ch1n3du",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^18.0.3",
+    "commander": "^9.3.0",
+    "commander-ts": "^0.2.0"
+  },
+  "bin": "./target/index.js",
+  "dependencies": {
+  }
+}
