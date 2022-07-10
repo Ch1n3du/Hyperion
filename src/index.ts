@@ -104,8 +104,6 @@ program.command("parse")
         }
     })
 
-// ! Low Priority
-// TODO
 // hyperion tokenize <file_name> --bytes
 // hyperion tokenize <file_name> --hex
 program.command("tokenize")

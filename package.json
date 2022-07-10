@@ -1,6 +1,6 @@
 {
   "name": "hyperion-pl",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A CLI for using the Plutus-Light library.",
   "main": "./target/index.js",
   "scripts": {
@@ -13,7 +13,9 @@
     "commander": "^9.3.0",
     "commander-ts": "^0.2.0"
   },
-  "bin": "./target/index.js",
+  "bin":{
+    "hyperion-pl": "./target/index.js"
+  },
   "dependencies": {
   }
 }
