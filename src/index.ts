@@ -1,6 +1,6 @@
 import { Command, Option } from "commander";
 
-import * as PL from "./plutus-light/plutus-light" ;
+import * as Helios from "./Helios/helios" ;
 
 import { apply_and_log_result, apply_and_write_result } from './command_helpers';
 
@@ -9,7 +9,7 @@ const program = new Command();
 program
     .name("Hyperion")
     .description("A small CLI to help the ergonomics of Plutus-Light.")
-    .version("1.0.0")
+    .version("1.0.1")
 
 // hyperion compile <file_name>
 // hyperion compile <file_name> --data
@@ -21,8 +21,8 @@ program.command("compile")
     .option("-d, --data", "Parse Plutus-Light Data.")
     .option("-v, --verbose", "Turn on verbose mode.")
     .action((file_path, options) => {
-        let func = PL.compilePlutusLightProgram;
-        if (options.data) { func = PL.compilePlutusLightData }
+        let func = Helios.compileHeliosProgram;
+        if (options.data) { func = Helios.compileHeliosData}
 
         if (options.print_output) {
             apply_and_log_result(func)(file_path, options.verbose)
@@ -39,7 +39,7 @@ program.command("pretty_print")
     .option("-v, --verbose", "Turn on verbose mode.")
     .action((file_path, options) => {
 		let verbose = options.verbose as boolean;
-		apply_and_log_result(PL.prettySource)(file_path, verbose);
+		apply_and_log_result(Helios.prettySource)(file_path, verbose);
     })
 
 // ! Low Priority
@@ -55,9 +55,9 @@ program.command("deserialize")
     .option("-b, --bytes", "Deserialize Plutus Core from CBOR bytes.")
     .option("-h, --hex", "Deserialize Plutus Core CBOR HexString.")
     .action((file_path, options) => {
-        let func = PL.deserializePlutusCoreBytes;
-        if (options.bytes) { func = PL.deserializePlutusCoreCborBytes }
-        if (options.hex) { func = PL.deserializePlutusCoreCborHexString }
+        let func = Helios.deserializePlutusCoreBytes;
+        if (options.bytes) { func = Helios.deserializePlutusCoreCborBytes}
+        if (options.hex) { func = Helios.deserializePlutusCoreCborHexString}
 
         if (!options.path) {
             apply_and_log_result(func)(file_path, options.verbose)
@@ -76,8 +76,8 @@ program.command("dump")
     .option("-v, --verbose", "Turn on verbose mode.")
     .option("-h, --hex", "Deserialize Plutus Core CBOR HexString.")
     .action((file_path, options) => {
-        let func = PL.dumpPlutusCoreCborBytes;
-        if (options.hex) { func = PL.deserializePlutusCoreCborHexString }
+        let func = Helios.dumpPlutusCoreCborBytes;
+        if (options.hex) { func = Helios.dumpPlutusCoreCborHexString}
         
         if (!options.path) {
             apply_and_log_result(func)(file_path, options.verbose)
@@ -94,7 +94,7 @@ program.command("parse")
     .option("-o, --output_file <output_path>", "Add custom output file.")
     .option("-v, --verbose", "Turn on verbose mode.")
     .action((file_path, options) => {
-        let func = PL.parsePlutusLight;
+        let func = Helios.parseHelios;
 
         if (!options.path) {
             apply_and_log_result(func)(file_path, options.verbose)
@@ -113,8 +113,8 @@ program.command("tokenize")
     .option("-v, --verbose", "Turn on verbose mode.")
     .option("-u, --upll", "Tokenize Untyped Plutus Light")
     .action((file_path, options) => {
-        let func = PL.parsePlutusLight;
-        if (options.upll) { func = PL.tokenizeUntypedPlutusLight }
+        let func = Helios.tokenizeHelios;
+        if (options.upll) { func = Helios.tokenizeUntypedHelios}
 
         if (!options.path) {
             apply_and_log_result(func)(file_path, options.verbose)
